@@ -1,0 +1,11 @@
+[Unit]
+Description=Service to power down backlight on startup
+After=network.target multi-user.target
+
+[Service]
+User=root
+ExecStart=/usr/local/bin/power-screen-backlight.sh 0
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
