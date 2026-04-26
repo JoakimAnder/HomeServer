@@ -6,6 +6,11 @@ Flash Ubuntu iso to usb. Install on server.
 ## Ubuntu CLI cheat sheet
 <img width="1920" height="1357" alt="image" src="https://github.com/user-attachments/assets/352bccb6-280d-4003-a752-d2a6ed7d1f04" />
 
+## Start admin session
+~~~
+sudo -i
+~~~
+
 ## Update packages
 ~~~
 sudo apt update
@@ -59,9 +64,33 @@ sudo ufw allow proto tcp from 192.168.1.0/24 to any port 6443
 sudo ufw enable
 ~~~
 
-## Install k3s (Kubernetes)
+## Install Docker
 ~~~
-sudo curl -sfL https://get.k3s.io | sh -
+curl -fsSL https://get.docker.com | sh
+~~~
+
+## Connect to Storage
+~~~
+sudo apt install cifs-utils
+~~~
+~~~
+nano /etc/fstab
+~~~
+
+Add the following to the bottom:
+~~~
+//home-server/Storage /mnt/Storage cifs guest,vers=3.0,_netdev,nofail 0 0
+~~~
+Save and exit.
+
+~~~
+mkdir /mnt/Storage
+~~~
+~~~
+systemctl daemon-reload
+~~~
+~~~
+mount -a
 ~~~
 
 
